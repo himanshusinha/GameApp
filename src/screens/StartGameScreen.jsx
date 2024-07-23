@@ -11,10 +11,12 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import PrimaryButton from '../components/PrimaryButton/PrimaryButton';
 import images from '../constants/images';
+import {useNavigation} from '@react-navigation/native';
+import routes from '../constants/routes';
 
 function StartGameScreen() {
   const [enteredNumber, setEnteredNumber] = useState('');
-
+  const navigation = useNavigation();
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
   }
@@ -33,7 +35,7 @@ function StartGameScreen() {
       );
       return;
     }
-    return;
+    return navigation.navigate(routes.GAME_SCREEN);
   }
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
